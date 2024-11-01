@@ -1,5 +1,5 @@
 import { DOM_QUERIES } from "./const.js"
-import { $ } from "./utils.js"
+import { $, $$, slide } from "./utils.js"
 import { State } from "./class/State.js"
 import { VisibilityHandler } from "./class/Observers.js"
 
@@ -16,4 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
   menuIcon.addEventListener('click', () => {
     visibility.state = !visibility.state
   })
+
+  const sliderImages = $$(DOM_QUERIES.sliderImages)
+  const images = []
+  for (let image of sliderImages){
+    const initialState = image.classList.contains('hide')? false:true
+    const state = new State(initialState)
+    state.attach(new VisibilityHandler(image))
+    images.push(state)
+  }
+  slide(images)
 })
