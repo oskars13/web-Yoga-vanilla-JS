@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+
+/*
+  >>> Property 'animation-timeline: scroll()', is an experimental feature
+*/
+
+
 :root{
   --roboto: "Roboto", serif;
   --white: #f2f2f2;
@@ -44,24 +50,43 @@ a {
   text-decoration: none;
 }
 
-h1{
-  font-size: 30pt;
+.title{
+  font-size: 2rem;
   font-weight: 700;
   font-style: normal;
 }
 
+h1 { 
+  text-wrap: nowrap;
+
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: 700;
+}
 
 #main-header {
   display: flex;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
+  width: 100dvw;
   height: 70px;
+  z-index: 100;
 
   border-bottom: 1px solid var(--black);
 
   align-items: center;
   justify-content: space-between;
   
-  position: sticky;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  backdrop-filter: blur(10px);
+  background-color: #e3fbdf88;
+
+  animation-name: header-scroll;
+  animation-timeline: scroll(root block);
+  animation-range-end: 100px;
+  animation-fill-mode: both;
 }
 
 .menu {
@@ -69,15 +94,16 @@ h1{
   left: 0;
   top: 0;
 
-  background-color: var(--background-color-1);
+  background-color: var(--green-white);
 
   width: 90dvw;
   height: 100dvh;
+  padding: 2rem 0 1rem 0;
 
   display: flex;
   flex-direction: column;
 
-  justify-content: space-around;
+  justify-content: space-between;
 
   & a{
     width: 100%;
@@ -90,11 +116,7 @@ h1{
   }
 
   & h2{
-    font-size: 30pt;
-    font-weight: 700;
     align-self: center;
-
-    padding-top: 3rem
   }
 }
 
@@ -106,6 +128,7 @@ h1{
   height: 50%;
 
   justify-content: space-between;
+  transform: translateY(-15%);
 
   & li {
       font-size: 20pt;
@@ -146,7 +169,10 @@ h1{
   display: flex;
   flex-direction: column;
 
+  justify-content: center;
+
   height: 50dvh;
+  position: relative;
 
   & .slider-images{
     display: flex;
@@ -154,6 +180,44 @@ h1{
 
     width: 100%;
     height: 100%;
+  }
+
+  & .slider-info{
+    position: absolute;
+    width: 90%;
+    height: 90%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    background-color: #01100866;
+
+    align-self: center;
+  }
+  & h2 {
+    text-align: center;
+    color: var(--green-white);
+  }
+
+  & p {
+    color: var(--green-white);
+    text-align: center;
+    max-width: 90%;
+  }
+
+  & a {
+    border: 1px solid var(--green-black);
+    background-color: var(--green-white);
+    color: var(--green-black);
+    width: 90%;
+    height: 15%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20pt;
   }
 }
 
@@ -168,6 +232,37 @@ h1{
   font-size: 20pt;
 }
 
+main{
+  top: 70px;
+  position: relative;
+
+  & .main-slice {
+    width: 100%;
+    height: 90dvh;
+  }
+  
+  & .dark {
+    background-color: var(--green-black);
+    
+    & h3, a, p {
+      color: var(--green-white);
+    }
+  }
+  & .light {
+    background-color: var(--green-white);
+    
+    & h3, a, p {
+      color: var(--green-black);
+    }
+  }
+}
+
 
 
 .hide { display: none }
+
+@keyframes header-scroll {
+  to {
+    height: 50px;
+  }
+}
