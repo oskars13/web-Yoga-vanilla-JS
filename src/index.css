@@ -2,7 +2,8 @@
 
 
 /*
-  >>> Property 'animation-timeline: scroll()', is an experimental feature
+  >>> Property 'animation-timeline: scroll()' is an experimental feature (CanIUse: 70%)
+  >> Es NECESARIO buscar una alternativa
 */
 
 
@@ -238,7 +239,7 @@ main{
 
   & .main-slice {
     width: 100%;
-    height: 90dvh;
+    height: calc(100dvh - 50px);
   }
   
   & .dark {
