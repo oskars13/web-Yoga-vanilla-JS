@@ -1,5 +1,5 @@
 import { DOM_QUERIES } from "./js/const.js"
-import { $$, $ } from "./js/utils.js"
+import { $ } from "./js/utils.js"
 
 
 export const loadStyles = async () => {
@@ -7,5 +7,4 @@ export const loadStyles = async () => {
     $(DOM_QUERIES.mainHeader)
       .style.animation = 'none'
   }
-  
 }
